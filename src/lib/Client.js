@@ -23,7 +23,7 @@ class Client {
     Logger.info("PAYMENT ADDRESS KEY: " + this.config.paymentAddress);
 
     if (this.config.storage.postgres) {
-      this.store = new Storage.PSQLStore(this.config.storage.postgres);
+      this.store = new Storage.PSQLStore(this.config.storage.postgres, this.config.storage.sslmode);
     } else if (this.config.storage.sqlite) {
       this.store = new Storage.SqliteStore(this.config.storage.sqlite);
     }
