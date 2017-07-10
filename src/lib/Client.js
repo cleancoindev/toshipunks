@@ -87,6 +87,10 @@ class Client {
                   values: ['paymentAddress', 'language']
                 }));
               } else if (sofa.type != 'Payment') { // Only forward non payment types
+                if (sofa.type == 'Message' && sofa.body == '') {
+                  // ignore empty messages (a.k.a. bot wake up messages)
+                  return;
+                }
                 this.bot.onClientMessage(session, sofa);
               }
             }
