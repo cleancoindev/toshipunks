@@ -67,7 +67,7 @@ class PSQLStore {
       config = parse_psql_url(config);
     }
     this.config = config;
-    if (sslmode) {
+    if (sslmode == 'require') {
       this.config.ssl = sslmode;
     }
     this.pgPool = new pg.Pool(this.config);
